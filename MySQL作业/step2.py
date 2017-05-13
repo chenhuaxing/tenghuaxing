@@ -13,8 +13,8 @@ if __name__ == '__main__':
     conn = MySQLdb.connect(
         host='localhost',
         port=3306,
-        user='root',
-        passwd='debian-sys-maint',
+        user='debian-sys-maint',
+        passwd='t3XTJ6BePrK626Id',
         charset='utf8',
         db='university'
     )
@@ -27,7 +27,7 @@ if __name__ == '__main__':
         return _result
 
     #插入department数据操作
-    with open("/home/chx/Documents/陈华兴/university/department.txt","r") as f:
+    with open("/home/chx/Documents/陈华兴作业4/university/department.txt","r") as f:
         datas = [prc_line(line) for line in f.readlines()]
     for data in datas:
         cur.execute("insert into department(dept_name, building, budget) values('%s','%s',%d)"%(data[0],data[1],data[2]))
@@ -41,10 +41,12 @@ if __name__ == '__main__':
         _result[3] = int(_result[3])
         return _result
 
-    with open("/home/chx/Documents/陈华兴/university/student.txt","r") as f:
+    with open("/home/chx/Documents/陈华兴作业4/university/student.txt","r") as f:
         datas = [prc_line1(line) for line in f.readlines()]
     for data in datas:
-        cur.execute("insert into student(ID, name, sex, age, emotion_state, dept_name) values(%d,'%s','%s', %d, '%s', '%s')"%(data[0],data[1],data[2],data[3],data[4],data[5]))
+        print data[1]+'\n'
+        cur.execute("insert into student(ID, name, sex, age, emotion_state, dept_name) values(%d,'%s','%s', %d, '%s','%s')"%(data[0],data[1],data[2],data[3],data[4],data[5]))
+    conn.commit()
 
     #同上
     def prc_line2(line):
@@ -53,7 +55,7 @@ if __name__ == '__main__':
         _result[2] = int(_result[2])
         return _result
 
-    with open("/home/chx/Documents/陈华兴/university/exam.txt","r") as f:
+    with open("/home/chx/Documents/陈华兴作业4/university/exam.txt","r") as f:
         datas = [prc_line2(line) for line in f.readlines()]
     for data in datas:
         cur.execute("insert into exam(student_ID, exam_Name, grade) values(%d, '%s', %d)"%(data[0],data[1],data[2]))
