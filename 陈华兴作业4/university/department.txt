@@ -1,0 +1,5 @@
+computer Building_A 12000
+biology Building_B 24000
+physics Building_C 28000
+new Building_D 8000
+math Buding_E 35000
